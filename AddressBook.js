@@ -106,3 +106,30 @@ function sortContactsByName() {
 function printSortedContacts() {
     console.log(sortContactsByName().map(contact => contact.toString()).join('\n'));
 }
+function sortContactsByCity() {
+    return addressBook.sort((a, b) => a.city.localeCompare(b.city));
+}
+
+function sortContactsByState() {
+    return addressBook.sort((a, b) => a.state.localeCompare(b.state));
+}
+
+function sortContactsByZip() {
+    return addressBook.sort((a, b) => a.zip.localeCompare(b.zip));
+}
+
+function printSortedContacts() {
+    console.log(sortContactsByName().map(contact => contact.toString()).join('\n'));
+}
+
+function printSortedContactsByCity() {
+    console.log(sortContactsByCity().map(contact => contact.toString()).join('\n'));
+}
+
+function printSortedContactsByState() {
+    console.log(sortContactsByState().map(contact => contact.toString()).join('\n'));
+}
+
+function printSortedContactsByZip() {
+    console.log(sortContactsByZip().map(contact => contact.toString()).join('\n'));
+}
