@@ -98,3 +98,11 @@ function countByCity(city) {
 function countByState(state) {
     return addressBook.filter(contact => contact.state === state).reduce(count => count + 1, 0);
 }
+
+function sortContactsByName() {
+    return addressBook.sort((a, b) => (a.firstName + a.lastName).localeCompare(b.firstName + b.lastName));
+}
+
+function printSortedContacts() {
+    console.log(sortContactsByName().map(contact => contact.toString()).join('\n'));
+}
