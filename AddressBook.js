@@ -48,6 +48,13 @@ function addContact(contact) {
 function getContacts() {
     return addressBook;
 }
-
+function findAndEditContact(firstName, lastName, updatedDetails) {
+    let contact = addressBook.find(c => c.firstName === firstName && c.lastName === lastName);
+    if (contact) {
+        Object.assign(contact, updatedDetails);
+    } else {
+        throw new Error("Contact not found");
+    }
+}
 
    
