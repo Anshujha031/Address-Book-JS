@@ -35,10 +35,15 @@ class Contact {
         this.email = email;
     }
 }
-    const addressBook = [];
+const addressBook = [];
 
 function addContact(contact) {
     if (contact instanceof Contact) {
+        // Using filter to check for duplicate contacts
+        let duplicate = addressBook.filter(c => c.firstName === contact.firstName && c.lastName === contact.lastName);
+        if (duplicate.length > 0) {
+            throw new Error("Duplicate contact: A contact with the same name already exists.");
+        }
         addressBook.push(contact);
     } else {
         throw new Error("Invalid contact: Must be an instance of Contact");
@@ -49,23 +54,42 @@ function getContacts() {
     return addressBook;
 }
 
-function deleteContact(firstName, lastName) {
-    let index = addressBook.findIndex(c => c.firstName === firstName && c.lastName === lastName);
-    if (index !== -1) {
-        addressBook.splice(index, 1);
 function findAndEditContact(firstName, lastName, updatedDetails) {
     let contact = addressBook.find(c => c.firstName === firstName && c.lastName === lastName);
     if (contact) {
         Object.assign(contact, updatedDetails);
-
     } else {
         throw new Error("Contact not found");
     }
 }
 
+function deleteContact(firstName, lastName) {
+    let index = addressBook.findIndex(c => c.firstName === firstName && c.lastName === lastName);
+    if (index !== -1) {
+        addressBook.splice(index, 1);
+    } else {
+        throw new Error("Contact not found");
     }
-
 }
+
 function getContactCount() {
     return addressBook.reduce(count => count + 1, 0);
 }
+
+
+try {
+    let contact1 = new Contact("John", "Doe", "123 Elm St", "Spring", "IL", "62704", "1234567890", "john.doe@example.com");
+    addContact(contact1);
+
+    let contact2 = new Contact("Jane", "Smith", "456 Oak St", "Metro", "NY", "10001", "9876543210", "jane.smith@example.com");
+    addContact(contact2);
+
+   
+    let duplicateContact = new Contact("John", "Doe", "789  St", "AnotherCity", "TX", "75001", "1122334455", "john.dup@example.com");
+    addContact(duplicateContact); 
+} catch (error) {
+    console.error(error.message);
+}
+
+console.log("Total Contacts:", getContactCount());
+console.log("Contacts:", getContacts());
