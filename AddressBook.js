@@ -77,19 +77,29 @@ function getContactCount() {
 }
 
 
-try {
-    let contact1 = new Contact("John", "Doe", "123 Elm St", "Spring", "IL", "62704", "1234567890", "john.doe@example.com");
-    addContact(contact1);
+// try {
+//     let contact1 = new Contact("John", "Doe", "gwl", "Spring", "IL", "62704", "1234567890", "john.doe@example.com");
+//     addContact(contact1);
 
-    let contact2 = new Contact("Jane", "Smith", "456 Oak St", "Metro", "NY", "10001", "9876543210", "jane.smith@example.com");
-    addContact(contact2);
+//     let contact2 = new Contact("Jane", "Smith", "456 Oak St", "Metro", "NY", "10001", "9876543210", "jane.smith@example.com");
+//     addContact(contact2);
 
    
-    let duplicateContact = new Contact("John", "Doe", "789  St", "AnotherCity", "TX", "75001", "1122334455", "john.dup@example.com");
-    addContact(duplicateContact); 
-} catch (error) {
-    console.error(error.message);
+//     let duplicateContact = new Contact("John", "Doe", "789  St", "AnotherCity", "TX", "75001", "1122334455", "john.dup@example.com");
+//     addContact(duplicateContact); 
+// } catch (error) {
+//     console.error(error.message);
+// }
+
+
+
+function searchByCity(city) {
+    return addressBook.filter(contact => contact.city === city).map(contact => `${contact.firstName} ${contact.lastName}`);
 }
 
-console.log("Total Contacts:", getContactCount());
-console.log("Contacts:", getContacts());
+function searchByState(state) {
+    return addressBook.filter(contact => contact.state === state).map(contact => `${contact.firstName} ${contact.lastName}`);
+}
+console.log("search : " , searchByCity("gwl"));
+// console.log("Total Contacts:", getContactCount());
+// console.log("Contacts:", getContacts());
