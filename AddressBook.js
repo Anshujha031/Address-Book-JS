@@ -49,5 +49,12 @@ function getContacts() {
     return addressBook;
 }
 
-
+function deleteContact(firstName, lastName) {
+    let index = addressBook.findIndex(c => c.firstName === firstName && c.lastName === lastName);
+    if (index !== -1) {
+        addressBook.splice(index, 1);
+    } else {
+        throw new Error("Contact not found");
+    }
+}
    
