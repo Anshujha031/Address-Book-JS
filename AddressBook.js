@@ -63,6 +63,6 @@ function findAndEditContact(firstName, lastName, updatedDetails) {
     }
 }
 
+    }
 
-
-   
+}
