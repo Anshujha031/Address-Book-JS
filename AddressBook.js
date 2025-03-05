@@ -66,3 +66,6 @@ function findAndEditContact(firstName, lastName, updatedDetails) {
     }
 
 }
+function getContactCount() {
+    return addressBook.reduce(count => count + 1, 0);
+}
