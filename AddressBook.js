@@ -90,3 +90,11 @@ function viewPersonsByCity(city) {
 function viewPersonsByState(state) {
     return addressBook.filter(contact => contact.state === state);
 }
+
+function countByCity(city) {
+    return addressBook.filter(contact => contact.city === city).reduce(count => count + 1, 0);
+}
+
+function countByState(state) {
+    return addressBook.filter(contact => contact.state === state).reduce(count => count + 1, 0);
+}
