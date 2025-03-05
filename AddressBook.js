@@ -34,40 +34,20 @@ class Contact {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
+}
+    const addressBook = [];
 
-    getFirstName() {
-        return this.firstName;
-    }
-
-    getLastName() {
-        return this.lastName;
-    }
-
-    getAddress() {
-        return this.address;
-    }
-
-    getCity() {
-        return this.city;
-    }
-
-    getState() {
-        return this.state;
-    }
-
-    getZip() {
-        return this.zip;
-    }
-
-    getPhoneNumber() {
-        return this.phoneNumber;
-    }
-
-    getEmail() {
-        return this.email;
-    }
-
-    toString() {
-        return `Contact { firstName: '${this.firstName}', lastName: '${this.lastName}', address: '${this.address}', city: '${this.city}', state: '${this.state}', zip: '${this.zip}', phoneNumber: '${this.phoneNumber}', email: '${this.email}' }`;
+function addContact(contact) {
+    if (contact instanceof Contact) {
+        addressBook.push(contact);
+    } else {
+        throw new Error("Invalid contact: Must be an instance of Contact");
     }
 }
+
+function getContacts() {
+    return addressBook;
+}
+
+
+   
