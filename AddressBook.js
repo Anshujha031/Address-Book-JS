@@ -53,8 +53,16 @@ function deleteContact(firstName, lastName) {
     let index = addressBook.findIndex(c => c.firstName === firstName && c.lastName === lastName);
     if (index !== -1) {
         addressBook.splice(index, 1);
+function findAndEditContact(firstName, lastName, updatedDetails) {
+    let contact = addressBook.find(c => c.firstName === firstName && c.lastName === lastName);
+    if (contact) {
+        Object.assign(contact, updatedDetails);
+
     } else {
         throw new Error("Contact not found");
     }
 }
+
+
+
    
